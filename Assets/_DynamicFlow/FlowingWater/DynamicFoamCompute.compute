@@ -1,0 +1,24 @@
+#pragma kernel FoamFlowKernel
+
+RWTexture2D<float> _DepthFoam_Write;
+RWTexture2D<float> _DepthFoam_Read;
+Texture2D<float> DepthDifference;
+
+float persistence;
+float flowSpeed;
+float4 flowDirection;
+
+[numthreads(32,32,1)]
+void FoamFlowKernel(uint3 id : SV_DispatchThreadID)
+{
+    uint width;
+    uint height;
+    _DepthFoam_Read.GetDimensions(width, height);
+    float currentDepth = DepthDifference[id.xy];
+
+    float2 flow = flowDirection.xy * float2(width, height) * flowSpeed;
+
+    float displacedFoam = _DepthFoam_Read[id.xy - flow];
+
+    _DepthFoam_Write[id.xy] = (saturate(currentDepth) + displacedFoam * persistence).x;
+}
