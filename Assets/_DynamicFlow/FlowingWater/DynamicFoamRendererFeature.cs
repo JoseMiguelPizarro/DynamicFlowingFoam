@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class DynamicFoamRenderFeature : ScriptableRendererFeature
+public class DynamicFoamRendererFeature : ScriptableRendererFeature
 {
     class CustomRenderPass : ScriptableRenderPass
     {

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3c643926fd5f4a478e03d1b08520093, type: 3}
-  m_Name: NewDynamicFoamRenderFeature
+  m_Name: NewDynamicFoamRendererFeature
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
